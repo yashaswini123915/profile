@@ -1,0 +1,273 @@
+<!--
+README / Quick Setup (top-level instructions)
+1. Save this file as index.html, and the CSS/JS below as styles.css and main.js (same directory).
+2. Replace placeholder assets:
+   - Hero video: replace src in <video id="heroVideo"> with your royalty-free mp4.
+   - Profile picture: update <img id="profilePic"> src.
+   - CV link: update #cvLink href to your CV (line near hero button).
+   - Social links: update anchors with your GitHub/LinkedIn/email.
+3. Email sending (Contact form):
+   - This example uses EmailJS client-side. Replace EMAILJS_USER_ID, SERVICE_ID, TEMPLATE_ID in main.js.
+   - Alternatively, switch to Formspree/Netlify forms — see comments in main.js.
+4. Viewer count:
+   - Uses CountAPI by default. Replace <namespace> and <key> placeholders in main.js.
+   - If you don't want external calls, the script falls back to localStorage.
+5. Libraries used (CDN): GSAP (core + ScrollTrigger), Feather icons, EmailJS (optional).
+6. Accessibility: tab through interactive elements, all inputs have labels. Focus styles included.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>M.R. Yashaswini — Frontend Developer</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- GSAP & ScrollTrigger (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+
+  <!-- EmailJS (optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js" defer></script>
+
+  <!-- Feather icons -->
+  <script src="https://unpkg.com/feather-icons" defer></script>
+
+</head>
+<body>
+
+  <!-- Fixed Navbar -->
+  <header class="navbar" role="banner">
+    <div class="container navbar-inner">
+      <a class="logo" id="logo" href="https://instagram.com/chaturya_shivaganga" target="_blank" rel="noopener noreferrer" aria-label="Open Instagram">
+        MRY
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav-list" id="navList">
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#about" class="nav-link">About Me</a></li>
+          <li><a href="#contact" class="nav-link">To Hire Me</a></li>
+        </ul>
+
+        <!-- Hamburger (mobile) -->
+        <button id="hamburger" class="hamburger" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+<!---hero-->
+   <section id="hero" class="hero" aria-labelledby="hero-heading">
+  <div class="hero-container">
+    <!-- Left: Hero Copy -->
+    <div class="hero-copy">
+      <div class="typed-container" aria-live="polite">
+        <span class="typed-fixed">I'm</span>
+        <span class="typed-wrap">
+          <span id="typedLine" class="typed-line"></span>
+          <span id="typedCursor" class="typed-cursor" aria-hidden="true">|</span>
+        </span>
+      </div>
+
+      <p class="hero-sub">
+        I craft intuitive, responsive interfaces and delightful user experiences. I focus on clean code, accessibility, and modern tooling.
+      </p>
+
+      <div class="hero-cta">
+        <a id="cvLink" class="btn primary" href="resume.pdf" target="_blank" rel="noopener noreferrer">View CV</a>
+
+        <div class="socials" aria-label="Social links">
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub">
+            <i data-feather="github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn">
+            <i data-feather="linkedin"></i>
+          </a>
+          <a href="mailto:mudragaddarajaniyashaswini@gmail.com" class="social" aria-label="Email">
+            <i data-feather="mail"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Profile Image -->
+    <div class="hero-profile" aria-hidden="false">
+      <img id="profilePic" src="profilephoto.png" alt="M. Rajani Yashaswini — profile" />
+    </div>
+  </div>
+</section>
+   <!-- marquee -->
+        <div class="marquee" aria-hidden="false">
+          <div class="marquee-inner" id="marqueeInner">
+            python • sql • database • html • css • tailwind css • javascript • nextjs • figma • shadcn •
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section projects " aria-labelledby="projects-heading">
+      <div class="container">
+        <h2 id="projects-heading" class="section-title">Projects</h2>
+        <p class="section-sub">A selection of work — interactive, responsive and built with modern stacks.</p>
+
+        <div class="projects-grid" id="projectsGrid" role="list">
+          <!-- 5 project cards -->
+          <article class="project-card" role="listitem">
+            <div class="sheen"></div>
+            <h3>Project 1</h3>
+            <p>Short description of Project 1 — problem solved and value delivered.</p>
+            <div class="tech">
+              <span class="badge">HTML</span>
+              <span class="badge">CSS</span>
+              <span class="badge">JavaScript</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn small" href="#" target="_blank" rel="noopener noreferrer">Live</a>
+              <a class="btn ghost small" href="#" target="_blank" rel="noopener noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="project-card" role="listitem">
+            <div class="sheen"></div>
+            <h3>Project 2</h3>
+            <p>Short description of Project 2 — highlights and features.</p>
+            <div class="tech">
+              <span class="badge">React</span>
+              <span class="badge">Next.js</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn small" href="#" target="_blank" rel="noopener noreferrer">Live</a>
+              <a class="btn ghost small" href="#" target="_blank" rel="noopener noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="project-card" role="listitem">
+            <div class="sheen"></div>
+            <h3>Project 3</h3>
+            <p>Short description of Project 3 — performance or UX improvements.</p>
+            <div class="tech">
+              <span class="badge">Tailwind</span>
+              <span class="badge">Figma</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn small" href="#" target="_blank" rel="noopener noreferrer">Live</a>
+              <a class="btn ghost small" href="#" target="_blank" rel="noopener noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="project-card" role="listitem">
+            <div class="sheen"></div>
+            <h3>Project 4</h3>
+            <p>Short description of Project 4 — API integration, etc.</p>
+            <div class="tech">
+              <span class="badge">API</span>
+              <span class="badge">MySQL</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn small" href="#" target="_blank" rel="noopener noreferrer">Live</a>
+              <a class="btn ghost small" href="#" target="_blank" rel="noopener noreferrer">Repo</a>
+            </div>
+          </article>
+
+          <article class="project-card" role="listitem">
+            <div class="sheen"></div>
+            <h3>Project 5</h3>
+            <p>Short description of Project 5 — accessibility & testing.</p>
+            <div class="tech">
+              <span class="badge">a11y</span>
+              <span class="badge">Testing</span>
+            </div>
+            <div class="project-actions">
+              <a class="btn small" href="#" target="_blank" rel="noopener noreferrer">Live</a>
+              <a class="btn ghost small" href="#" target="_blank" rel="noopener noreferrer">Repo</a>
+            </div>
+          </article>
+        </div>
+
+     
+
+  
+    <!-- ABOUT -->
+    <section id="about" class="section about" aria-labelledby="about-heading">
+      <div class="container about-inner about-card">
+        <div class="about-left ">
+          <h2 id="about-heading" class="section-title">About Me</h2>
+          <p class="about-lead">I'm a postgraduate in Computer Applications with a passion for frontend development and pixel-perfect UI.</p>
+          <ul class="about-list">
+            <li>Degree:  MCA (Computer Applications) from Krishna University </li>
+             <li>Degree:  Bsc(Computers) from Sri balasai degree college </li>
+            <li>Experience: Internships (React and Nextjs)</li>
+            <li>Focus: Accessibility, performance, developer experience</li>
+          </ul>
+        </div>
+
+        <div class="about-right">
+          <div >
+            <img src="C:\Users\LENOVO\Desktop\projects\protfolio\profilephoto.png" alt="Project collage / achievement image" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / HIRE ME -->
+    <section id="contact" class="section contact about-card" aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 id="contact-heading" class="section-title">To Hire Me</h2>
+        <p class="section-sub">Let's build something great together — contact me below.</p>
+
+        <div class="contact-grid">
+          <!-- contact form -->
+          <form id="contactForm" class="contact-form" aria-label="Contact form">
+            <label for="name">Name</label>
+            <input id="name" name="name" required />
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <div class="form-actions">
+              <button type="submit" class="btn primary">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="footer-copyright">© <span id="year"></span> M.R. Yashaswini</div>
+        <div id="viewerCount">Viewers: <span id="viewerNumber">—</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast container for form messages -->
+  <div id="toast" class="toast" aria-live="assertive" aria-atomic="true"></div>
+
+  <!-- Main JS -->
+  <script src="main.js" defer></script>
+</body>
+</html>
