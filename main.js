@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // (Optional: if using Lenis, hook here.)
 
   // ---------- Typed (typewriter) effect (vanilla) ----------
-  const typedLines = [ "M. Rajani Yashaswini."," Web Developer.", "Frontend Developer."];
+  const typedLines = [ "M. Rajani Yashaswini."," Web Developer.", "Frontend Developer.","UI/UX Designer."];
   let typedIndex = 0, charIndex = 0;
   const typedEl = qs('#typedLine');
   const cursorEl = qs('#typedCursor');
